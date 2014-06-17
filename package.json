@@ -1,0 +1,23 @@
+{
+  "name": "oauth-demo",
+  "description": "Brivo Labs SAM API - oauth demo",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "0.10.21",
+    "npm": "1.2.x"
+  },
+  "dependencies": {
+    "async": "0.2.9",
+    "commander": "^2.2.0",
+    "express": "3.4.x",
+    "jade": "1.1.x",
+    "open": "0.0.5",
+    "qs": "^0.6.6",
+    "request": "2.36.x",
+    "winston": "^0.7.3"
+  },
+  "scripts": {
+    "start": "coffee app.coffee"
+  }
+}

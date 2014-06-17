@@ -1,0 +1,55 @@
+//- Copyright (c) 2014 TopCoder, Inc. All rights reserved.
+//-
+//- @author TCSASSEMBLER
+//- @version 1.0
+//-
+
+doctype html
+html(lang="en")
+  head
+    title= pageTitle
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    script(src='/js/jquery.min.js')
+    script.
+      function reload() {
+        var url = '/environment/' + $('#environment option').filter(':selected').val();
+        $.get(url).done(function( data ) {
+          data = JSON.parse(data);
+          $('#clientId').val(data.clientId);
+          $('#clientSecret').val(data.clientSecret);
+        });
+      };
+  body
+    if loggedIn
+      input(style='position:absolute; top:0; right:0', class='btn btn-danger', type='button', value='Logout', onclick='document.location.href="/logout"')
+    if error
+      div(class='alert alert-warning')
+        strong
+          | Warning! There was an error while processing the request #{error}
+    h2
+      BrivoLabs OAuth Demo
+    form(class='form-horizontal', name='set', action='/session/set', method='post')
+      div(class='form-group')
+        label(class='col-sm-2 control-label', for='environment') Target environment
+        div(class='col-sm-2')
+          select(id='environment', name='environment', class='form-control', onchange='reload()')
+            for environment in environments
+              - var name=environment.commonName
+              option(value=name, selected=name == current) #{name}
+      div(class='form-group')
+        label(class='col-sm-2 control-label', for='domainId') Target domain id
+        div(class='col-sm-1')
+          input(type='text', id='domainId', name='domainId', value=domainId, maxlength='1', class='form-control')
+      div(class='form-group')
+        label(class='col-sm-2 control-label', for='clientId') Client ID
+        div(class='col-sm-2')
+          input(type='text', id='clientId', name='clientId', value=clientId, class='form-control')
+      div(class='form-group')
+        label(class='col-sm-2 control-label', for='clientSecret') Client secret
+        div(class='col-sm-2')
+          input(type='text', id='clientSecret', name='clientSecret', value=clientSecret, class='form-control')
+      div(class='form-group')
+        div(class='col-sm-offset-2 col-sm-2')
+          input(class='btn btn-primary', type='submit', value='Set Environment and Start')

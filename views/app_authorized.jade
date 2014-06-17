@@ -1,0 +1,23 @@
+//- Copyright (c) 2014 TopCoder, Inc. All rights reserved.
+//-
+//- @author TCSASSEMBLER
+//- @version 1.0
+//-
+
+doctype html
+html(lang="en")
+  head
+    title= pageTitle
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    script(src='/js/jquery.min.js')
+  body
+    input(style='position:absolute; top:0; right:0', class='btn btn-danger', type='button', value='Logout', onclick='document.location.href="/logout"')
+    div
+      | The application has been granted authorization. <br/>
+      | The client access token is: #{token} <br/>
+      | Your information: <br/>
+      pre
+        #{data}
+    
