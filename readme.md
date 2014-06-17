@@ -34,7 +34,7 @@ Same with SAM API, it is written primarily in [CoffeeScript](http://coffeescript
   npm install
 ```
 
-3. Update the config.coffee file pointing to your host and port (defaults are 'localhost' and 3000)
+3. Update the config.coffee file pointing to your host and port (defaults are 'localhost' and 3003)
    You can also add a custom server by uncommenting the custom environment section, and setting the host for the samUrl. See configuration for details.
 4. Run the application using
 

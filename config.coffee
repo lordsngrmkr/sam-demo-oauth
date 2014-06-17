@@ -15,7 +15,7 @@
 ###
 local = {
   commonName: 'local'
-  samUrl: 'https://localhost:5000'
+  samUrl: 'http://localhost:5000'
   type: 'development'
   clientId: 1
   clientSecret: 'demo-secret'
@@ -70,7 +70,7 @@ module.exports =
     port for this client
     @type {number}
   ###
-  port: 3000
+  port: 3003
 
   # environments
   ###
