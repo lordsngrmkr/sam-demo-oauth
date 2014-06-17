@@ -10,10 +10,21 @@ Same with SAM API, it is written primarily in [CoffeeScript](http://coffeescript
 # Configuration
   All Configuration is bundled in a single file, namely src/config.coffee.
   This list will explain the various options.  Most things will __not__ need to be modified during development.
+  The only things that you may need to change are related to the oauth demo client, at the module.exports section:
 
-*   **use_ssl** creates a secure server if true. Note that in heroku this is NOT needed.
-*   **pi** all setting related to the brivo pi interaction
-    *   **api_url** the BrivoPi root endpoint
+* **environment** set current environment to either development or production.
+* **host** the host where the oauth demo app will run. Usually the default value 'localhost' is OK.
+* **port** the port number used by the oauth demo app.
+
+  If you want to add a custom environment for testing, then please modify the custom section (and uncomment its block).
+  Do not modify existing ones since they are standard.
+  That section contains the following properties:
+
+* **commonName** the name of the environment. Leave the default value ('custom') unless multiple custom environments are required.
+* **samUrl** the URL of the brivo API host in the form of 'https://<HOST>:<PORT>'
+* **type** the environment type. Usually the default ('testing') is OK.
+
+  Then add the 'custom' string in the list of environments (list method on module.exports)
    
 # Local Deployment
 1. Ensure you have coffescript installed.  If you do not, run command: sudo npm install -g coffee-script
@@ -24,8 +35,7 @@ Same with SAM API, it is written primarily in [CoffeeScript](http://coffeescript
 ```
 
 3. Update the config.coffee file pointing to your host and port (defaults are 'localhost' and 3000)
-   You can also add a custom server by uncommenting the custom environment section, and setting the host for the samUrl.
-   Then add the custom environment to the list of available environments.
+   You can also add a custom server by uncommenting the custom environment section, and setting the host for the samUrl. See configuration for details.
 4. Run the application using
 
 ```
